@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,15 +7,19 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
-import SignUp from '../forms/SingUp';
+import SignUp from '../forms/SignUp';
+import SignIn from '../forms/SignIn';
 const ButtonAppBar = () => {
 
-  const [open, setOpen] = React.useState(false)
-  const handleClickOpen = () => {
+  const [open, setOpen] = useState(false)
+  const [type, setType] = useState(null)
+  const handleClickOpen = (openType= 'signIn') => {
     setOpen(true)
+    setType(openType)
   }
   const handleClose = () => {
     setOpen(false)
+    setType(null)
   }
 
   return (
@@ -34,18 +38,47 @@ const ButtonAppBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button color="inherit" onClick={handleClickOpen}>Login</Button>
+          <Button color="inherit" onClick={e =>handleClickOpen('signIn')}>Login</Button>
 
           <Dialog open={open} onClose={handleClose} aria-labelledby="registration">
-            <DialogTitle id="registration">Log in</DialogTitle>
-            <DialogContent>
-              <SignUp/>
+            {type === 'signUp' && (
+              <>
+                <DialogTitle id="registration">Registration</DialogTitle>
+                <DialogContent>
+                  <SignUp
+                    openSignIn = {e => {
+                      e.preventDefault()
+                      setType('signIn')
+                    }}
+                  />
 
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color={'primary'}>Cancel</Button>
-              <Button onClick={handleClose} color={'primary'}>Log in</Button>
-            </DialogActions>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color={'primary'}>Cancel</Button>
+                  <Button onClick={handleClose} color={'primary'}>Register</Button>
+                </DialogActions>
+              </>
+            )}
+
+            {type === 'signIn' && (
+              <>
+                <DialogTitle id="registration">Log in</DialogTitle>
+                <DialogContent>
+                  <SignIn
+                    openSignUp = {e => {
+                      e.preventDefault()
+                      setType('signUp')
+                    }}
+                  />
+
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color={'primary'}>Cancel</Button>
+                  <Button onClick={handleClose} color={'primary'}>Log in</Button>
+                </DialogActions>
+              </>
+            )}
+
           </Dialog>
 
         </Toolbar>
