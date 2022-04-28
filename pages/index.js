@@ -1,24 +1,21 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import ProTip from '../src/ProTip';
-import Link from '../src/Link';
-import Copyright from '../src/Copyright';
+import apartments from "../data/apartments.json"
+import {Grid} from '@mui/material';
+import ApartmentCard from '../components/apartments/Card';
+import MainLayout from '../components/layouts/Main';
 
-export default function Index() {
+function App() {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Next.js example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
-  );
+    <MainLayout>
+        <Grid container spacing={4}>
+          {apartments.map((apartment, index) => {
+            return (
+              <ApartmentCard key={index} apartment={apartment}/>
+            )
+          })}
+        </Grid>
+      </MainLayout>
+
+  )
 }
+
+export default App;
