@@ -5,6 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {CardHeader, Grid} from '@mui/material';
 
+
+
+
+
+
 const ApartmentDetail = (props) => {
   const router = useRouter()
   const {apartment} = props
