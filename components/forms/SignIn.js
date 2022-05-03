@@ -57,8 +57,8 @@ export default function SignIn({openSignUp}) {
   // };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+
+      <Container component="main" maxWidth="xs" sx={{width: "500px"}}>
         <CssBaseline />
         <Box
           sx={{
@@ -135,10 +135,14 @@ export default function SignIn({openSignUp}) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={!isValid}
+              color='primary'
             >
               Sign In
             </Button>
-            <Grid container>
+            <Grid container
+            spacing={2}
+            >
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
@@ -154,6 +158,5 @@ export default function SignIn({openSignUp}) {
         </Box>
         {/*<Copyright sx={{ mt: 8, mb: 4 }} />*/}
       </Container>
-    </ThemeProvider>
   );
 }

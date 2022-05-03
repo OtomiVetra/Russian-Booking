@@ -59,8 +59,8 @@ export default function SignUp({openSignIn}) {
   // };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+
+      <Container component="main" maxWidth="xs" sx={{width: "500px"}}>
         <CssBaseline />
         <Box
           sx={{
@@ -163,7 +163,7 @@ export default function SignUp({openSignIn}) {
                     }
                   })}
                 />
-                <div className="error" style={{ height: 20 }}>
+                <div sx={{color: 'red'}} className="error" style={{ height: 20 }}>
                   {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
                 </div>
               </Grid>
@@ -178,7 +178,7 @@ export default function SignUp({openSignIn}) {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2}}
               disabled={!isValid}
             >
               Sign Up
@@ -194,6 +194,5 @@ export default function SignUp({openSignIn}) {
         </Box>
         {/*<Copyright sx={{ mt: 5 }} />*/}
       </Container>
-    </ThemeProvider>
   );
 }

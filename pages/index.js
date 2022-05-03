@@ -9,7 +9,9 @@ function App() {
         <Grid container spacing={4}>
           {apartments.map((apartment, index) => {
             return (
-              <ApartmentCard key={index} apartment={apartment}/>
+              <Grid item xs="12" md="3">
+                <ApartmentCard key={index} apartment={apartment}/>
+              </Grid>
             )
           })}
         </Grid>

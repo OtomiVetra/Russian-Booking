@@ -36,7 +36,7 @@ const ButtonAppBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Russia booking
           </Typography>
           <Button color="inherit" onClick={e =>handleClickOpen('signIn')}>Login</Button>
 
