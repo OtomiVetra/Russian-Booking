@@ -6,11 +6,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, useTheme} from '@mui/material';
 import SignUp from '../forms/SignUp';
 import SignIn from '../forms/SignIn';
 const ButtonAppBar = () => {
 
+  const theme = useTheme()
   const [open, setOpen] = useState(false)
   const [type, setType] = useState(null)
   const handleClickOpen = (openType= 'signIn') => {
@@ -23,7 +24,7 @@ const ButtonAppBar = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton

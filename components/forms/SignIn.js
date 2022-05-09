@@ -11,8 +11,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useForm} from 'react-hook-form';
+import {useTheme} from '@mui/material';
 
 // function Copyright(props) {
 //   return (
@@ -27,9 +27,10 @@ import {useForm} from 'react-hook-form';
 //   );
 // }
 
-const theme = createTheme();
+
 
 export default function SignIn({openSignUp}) {
+  const theme = useTheme()
   const {
     register,
     formState: { errors, isValid },
@@ -58,7 +59,7 @@ export default function SignIn({openSignUp}) {
 
   return (
 
-      <Container component="main" maxWidth="xs" sx={{width: "500px"}}>
+      <Container component="main" maxWidth="xs" sx={{width: "500px", color: theme.palette.secondary.dark}}>
         <CssBaseline />
         <Box
           sx={{

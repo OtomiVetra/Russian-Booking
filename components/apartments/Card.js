@@ -6,12 +6,12 @@ import {useRouter} from 'next/router';
 
 const ApartmentCard = (props) => {
   const router = useRouter()
-  const {apartment} = props
+  const {apartment, id} = props
   const {img, name, price} = apartment
   return (
 
       <Card sx={{ maxWidth: 345 }} onClick={() => {
-        router.push("/apartments/1")
+        router.push(`/apartments/${id}`)
       }}
         sx={{cursor: "pointer"}}
       >
