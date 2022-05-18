@@ -1,17 +1,17 @@
 import MainLayout from '../../../components/layouts/Main';
 import SuitDetail from '../../../components/suites/Detail';
-import {useRouter} from 'next/router';
-import {useEffect} from 'react';
-import {useDataContext} from '../../../components/context/Data';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useDataContext } from '../../../components/context/Data';
 
 
 
 
 
 const SuitPage = () => {
-  const {suit, loadSuit} = useDataContext()
+  const { suit, loadSuit } = useDataContext()
   const router = useRouter()
-  const {id} = router.query
+  const { id } = router.query
   useEffect(() => {
     if (!id) {
       return
@@ -20,7 +20,7 @@ const SuitPage = () => {
   }, [id])
   return (
     <MainLayout>
-      {!!suit &&<SuitDetail/>}
+      {!!suit && <SuitDetail />}
     </MainLayout>
   )
 }

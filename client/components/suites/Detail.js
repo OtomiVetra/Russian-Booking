@@ -1,11 +1,11 @@
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import {CardHeader, Grid, Button} from '@mui/material';
+import { CardHeader, Grid, Button } from '@mui/material';
 import DatePickers from '../inputs/DatePicker';
-import {useDataContext} from '../context/Data';
+import { useDataContext } from '../context/Data';
 
 
 
@@ -14,8 +14,8 @@ import {useDataContext} from '../context/Data';
 
 const SuitDetail = () => {
   const router = useRouter()
-  const {suit} = useDataContext()
-  const {details:{description, area, pictures},rentPrices , id} = suit
+  const { suit } = useDataContext()
+  const { details: { description, area, pictures }, rentPrices, _id } = suit
   return (
 
     <Card>
@@ -40,16 +40,16 @@ const SuitDetail = () => {
             md={6}
           >
             <Typography variant="body2" color="text.secondary"
-              sx={{mb: 2}}
+              sx={{ mb: 2 }}
             >
               $ {rentPrices[0].price}
             </Typography>
-            <DatePickers/>
+            <DatePickers />
             <Button
               className="detailOrderButton"
               onClick={(event) => {
                 event.preventDefault()
-                router.push(`/suites/${suit.id}/order`)
+                router.push(`/suites/${suit._id}/order`)
               }}
               variant="outlined"
 

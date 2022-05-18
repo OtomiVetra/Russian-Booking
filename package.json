@@ -1,0 +1,21 @@
+{
+  "name": "russian-booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm run dev --prefix=client",
+    "server": "npm run dev --prefix=server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OtomiVetra/Russian-Booking.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OtomiVetra/Russian-Booking/issues"
+  },
+  "homepage": "https://github.com/OtomiVetra/Russian-Booking#readme"
+}
