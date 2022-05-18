@@ -1,19 +1,20 @@
 import {Container, Grid, Pagination} from '@mui/material';
-import SuitCard from '../components/suites/Card';
-import MainLayout from '../components/layouts/Main';
+import ApartmentCard from '../../components/apartments/Card';
+import MainLayout from '../../components/layouts/Main';
 import {useEffect, useState} from 'react';
-import {API_URL} from '../config';
 
 
 
+
+const API_URL = "/api"
 
 function App() {
-  const [suites, setSuites] = useState([])
+  const [apartments, setApartments] = useState([])
   useEffect(() => {
-    fetch(`${API_URL}/suites`)
+    fetch(`${API_URL}/apartments`)
       .then(res => res.json())
       .then(data => {
-        setSuites(data.items)
+        setApartments(data.items)
       })
   }, [])
   return (
@@ -21,10 +22,10 @@ function App() {
 
     <MainLayout>
       <Grid container spacing={4}>
-        {suites.map((suit, index) => {
+        {apartments.map((apartment, index) => {
           return (
             <Grid item xs="12" md="3">
-              <SuitCard id={index+1} key={index} suit={suit}/>
+              <ApartmentCard id={index+1} key={index} apartment={apartment}/>
             </Grid>
           )
         })}

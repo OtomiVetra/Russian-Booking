@@ -30,7 +30,6 @@ import {useTheme} from '@mui/material';
 
 
 export default function SignIn({openSignUp}) {
-  const theme = useTheme()
   const {
     register,
     formState: { errors, isValid },
@@ -59,7 +58,7 @@ export default function SignIn({openSignUp}) {
 
   return (
 
-      <Container component="main" maxWidth="xs" sx={{width: "500px", color: theme.palette.secondary.dark}}>
+      <Container component="main" maxWidth="xs" sx={{width: "500px"}}>
         <CssBaseline />
         <Box
           sx={{
@@ -69,7 +68,7 @@ export default function SignIn({openSignUp}) {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -102,7 +101,7 @@ export default function SignIn({openSignUp}) {
                 }
               })}
             />
-            <div className="error" style={{ height: 30 }}>
+            <div className="error" style={{ height: 30}}>
               {errors?.email && <p>{errors?.email?.message || "Error!"}</p>}
             </div>
             <TextField

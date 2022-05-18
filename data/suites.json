@@ -1,0 +1,252 @@
+[{
+  "id": 1,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},
+  {
+    "id": 2,
+    "facility": null,
+    "capacity": 2,
+    "details": {
+      "description": "The River House",
+      "area": 50,
+      "pictures": [
+        {
+          "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+          "description": "photo1"
+        }
+      ]
+    },
+    "rentPrices": [
+      {
+        "beginDate": "2022-06-01",
+        "endDate": "2022-06-30",
+        "price": 100,
+        "totalAvailable": 2
+      }
+    ],
+    "reservations": [
+
+    ]
+  },{
+  "id": 3,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},{
+  "id": 4,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},{
+  "id": 4,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},{
+  "id": 5,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},{
+  "id": 6,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},{
+  "id": 7,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},{
+  "id": 8,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 200,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+},{
+  "id": 9,
+  "facility": null,
+  "capacity": 2,
+  "details": {
+    "description": "The River House",
+    "area": 50,
+    "pictures": [
+      {
+        "url": "https://a0.muscache.com/im/pictures/monet/Luxury-41232703/original/6572e163-647b-4a5c-a738-8bd3c044fc70?im_w=1200",
+        "description": "photo1"
+      }
+    ]
+  },
+  "rentPrices": [
+    {
+      "beginDate": "2022-06-01",
+      "endDate": "2022-06-30",
+      "price": 100,
+      "totalAvailable": 2
+    }
+  ],
+  "reservations": [
+
+  ]
+}]

@@ -9,9 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, useTheme} from '@mui/material';
 import SignUp from '../forms/SignUp';
 import SignIn from '../forms/SignIn';
+import {useDataContext} from '../context/Data';
 const ButtonAppBar = () => {
 
   const theme = useTheme()
+  const {user} = useDataContext()
   const [open, setOpen] = useState(false)
   const [type, setType] = useState(null)
   const handleClickOpen = (openType= 'signIn') => {
@@ -39,7 +41,12 @@ const ButtonAppBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Russia booking
           </Typography>
-          <Button color="inherit" onClick={e =>handleClickOpen('signIn')}>Login</Button>
+          {user.auth?(
+            <Button color="inherit" onClick={e =>handleClickOpen('signIn')}>Profile </Button>
+          ):(
+            <Button color="inherit" onClick={e =>handleClickOpen('signIn')}>Login </Button>
+          )}
+
 
           <Dialog open={open} onClose={handleClose} aria-labelledby="registration">
             {type === 'signUp' && (

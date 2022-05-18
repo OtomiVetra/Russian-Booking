@@ -1,6 +1,6 @@
 import {Container} from '@mui/material';
 import Header from './Header';
-import LabelBottomNavigation from '../Footer';
+import SomeFooter from './Footer';
 
 function MainLayout({children}) {
   return (
@@ -11,7 +11,7 @@ function MainLayout({children}) {
       >
         {children}
       </Container>
-      <LabelBottomNavigation/>
+      <SomeFooter/>
     </div>
   )
 }

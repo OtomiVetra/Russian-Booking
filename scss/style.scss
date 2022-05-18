@@ -13,3 +13,16 @@
   margin-top: 24px;
   margin-bottom: 24px;
 }
+.payHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.error {
+  margin: 0 auto 20px auto;
+}
+
+.detailOrderButton {
+  margin: 20px auto 0 180px;
+}

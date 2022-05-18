@@ -1,18 +1,16 @@
 
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import { FormControl, FormLabel, RadioGroup, Radio, useTheme } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from "react-hook-form";
+import PaidIcon from '@mui/icons-material/Paid';
 
 
 // function Copyright(props) {
@@ -30,6 +28,7 @@ import { useForm } from "react-hook-form";
 
 
 export default function SignUp({ openSignIn }) {
+  const theme = useTheme()
 
   const {
     register,
@@ -58,8 +57,10 @@ export default function SignUp({ openSignIn }) {
 
   return (
 
-    <Container component="main" maxWidth="xs" sx={{ width: "500px" }}>
-      <CssBaseline />
+    <Container component="main"
+    // maxWidth="xs" sx={{width: "500px"}}
+    >
+
       <Box
         sx={{
           marginTop: 8,
@@ -68,12 +69,73 @@ export default function SignUp({ openSignIn }) {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
+
+        <Typography
+          color={theme.palette.secondary.main} //todo непонятки с цветом
+          component="h1"
+          variant="h4"
+          sx={{ marginBottom: "24px" }}
+        >
+          Запрос на бронирование
         </Typography>
+
+        <FormControl>
+          <FormLabel id="demo-radio-buttons-group-label"
+            sx={{ fontSize: "24px" }}
+          >Варианты оплаты</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="female"
+            name="radio-buttons-group"
+            sx={{ display: "flex", width: "500px" }}
+          >
+
+            <Box
+              sx={{ border: "2px solid grey", borderRadius: "14px 14px 0 0", borderBottom: 'none' }}
+            >
+              <FormControlLabel sx={{ height: "60px", display: "flex", ml: 1 }}
+                value="female" control={<Radio />} label="Оплатите полностью" />
+              <Typography
+                sx={{ ml: 2, opacity: "0.7" }}
+              >Заплатите сумму полностью и сфокусируйтесь на поездке.</Typography>
+            </Box>
+            <Box
+              sx={{ border: "2px solid grey", borderRadius: "0 0 14px 14px" }}
+            >
+              <FormControlLabel sx={{ height: "60px", display: "flex", ml: 1 }}
+                value="male" control={<Radio />} label="Оплатите часть сейчас, а остаток внесите позже" />
+              <Typography
+                sx={{ ml: 2, opacity: "0.7" }}
+
+              >Внесите $1 720,00 сейчас, а остаток ($1 770,00) автоматически спишется с того же способа оплаты 1 июн. 2022 г.. Без дополнительных сборов..</Typography>
+            </Box>
+
+          </RadioGroup>
+        </FormControl>
+
+
+        <Box className="payHeader"
+          sx={{ marginTop: "24px", width: "500px" }}
+        >
+          <Typography
+            className="payItem"
+            component="h1"
+            variant="h6"
+            textAlign="left"
+          >
+            Оплатить с помощью
+          </Typography>
+
+          <PaidIcon
+            sx={{ marginTop: "4px" }}
+          />
+
+        </Box>
+
+
+
+
+
         <Box component="form" noValidate
 
           // onSubmit={handleSubmit}
@@ -82,48 +144,61 @@ export default function SignUp({ openSignIn }) {
 
           sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
+                type="number"
                 autoComplete="given-name"
-                name="firstName"
+                name="cardNumber"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="cardNumber"
+                label="Номер Карты"
                 //autoFocus
-                {...register("firstName", {
+                {...register("cardNumber", {
                   required: "Поле должно быть заполнено!",
                   minLength: {
-                    value: 4,
-                    message: "Минимум 4 символа"
+                    value: 16,
+                    message: "проверьте номер карты"
                   }
                 })}
               />
-              <div className="error" style={{ height: 40 }}>
-                {errors?.firstName && <p>{errors?.firstName?.message || "Error!"}</p>}
-              </div>
-
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                type="month"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="family-name"
-                {...register("lastName", {
+                id="date"
+                name="date"
+                autoComplete="date"
+                {...register("date", {
+                  required: "Надо заполнить!",
+                })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                type="number"
+                required
+                fullWidth
+                id="cvv"
+                label="CVV"
+                name="cvv"
+                autoComplete="cvv"
+                {...register("cvv", {
                   required: "Поле должно быть заполнено!",
-                  minLength: {
+                  maxLength: {
                     value: 4,
-                    message: "Минимум 4 символа"
+                    message: "Максимум 4 символа"
                   }
                 })}
               />
-              <div className="error" style={{ height: 20 }}>
-                {errors?.lastName && <p>{errors?.lastName?.message || "Error!"}</p>}
-              </div>
             </Grid>
+            <div className="error" style={{ height: 20 }}>
+              {errors?.cardNumber && <p>{errors?.cardNumber?.message || "Error!"}</p>}
+              {errors?.lastName && <p>{errors?.lastName?.message || "Error!"}</p>}
+              {errors?.cvv && <p>{errors?.cvv?.message || "Error!"}</p>}
+            </div>
             <Grid item xs={12}>
               <TextField
                 required
@@ -181,13 +256,7 @@ export default function SignUp({ openSignIn }) {
           >
             Sign Up
           </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2" onClick={openSignIn}>
-                Уже есть аккаунт? Добро пожаловать
-              </Link>
-            </Grid>
-          </Grid>
+
         </Box>
       </Box>
       {/*<Copyright sx={{ mt: 5 }} />*/}

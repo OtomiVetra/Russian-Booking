@@ -5,26 +5,27 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {CardHeader, Grid, Button} from '@mui/material';
 import DatePickers from '../inputs/DatePicker';
+import {useDataContext} from '../context/Data';
 
 
 
 
 
 
-const ApartmentDetail = (props) => {
+const SuitDetail = () => {
   const router = useRouter()
-  const {apartment} = props
-  const {img, name, price} = apartment
+  const {suit} = useDataContext()
+  const {details:{description, area, pictures},rentPrices , id} = suit
   return (
 
     <Card>
       <CardHeader
-        title={name}
+        title={description}
       />
       <CardMedia
         component="img"
-        image={img}
-        alt=" "
+        image={pictures[0].url}
+        alt={pictures[0].url}
       />
       <CardContent>
         <Grid container spacing={4}>
@@ -41,12 +42,16 @@ const ApartmentDetail = (props) => {
             <Typography variant="body2" color="text.secondary"
               sx={{mb: 2}}
             >
-              $ {price}
+              $ {rentPrices[0].price}
             </Typography>
             <DatePickers/>
             <Button
+              className="detailOrderButton"
+              onClick={(event) => {
+                event.preventDefault()
+                router.push(`/suites/${suit.id}/order`)
+              }}
               variant="outlined"
-              sx={{mt: 2, ml: 20}}
 
             >Забронировать</Button>
           </Grid>
@@ -54,11 +59,10 @@ const ApartmentDetail = (props) => {
         </Grid>
       </CardContent>
 
+
     </Card>
-
-
 
   )
 }
 
-export default ApartmentDetail
+export default SuitDetail
