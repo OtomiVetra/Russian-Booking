@@ -1,13 +1,8 @@
-import {createContext, useContext, useState} from 'react'
-import {API_URL} from '../../config';
+import { createContext, useContext, useState } from 'react'
+import { API_URL } from '../../config';
 
 const DataContext = createContext()
-const defaultUser = {
-  name: "Jhon",
-  auth: false,
-  loading: false
-}
-export const DataProvider = ({children}) => {
+export const DataProvider = ({ children }) => {
   const [suit, setSuit] = useState(null)
 
   const loadSuit = (id) => {
@@ -18,7 +13,6 @@ export const DataProvider = ({children}) => {
       })
   }
   const value = {
-    user: defaultUser,
     suit,
     loadSuit
   }
