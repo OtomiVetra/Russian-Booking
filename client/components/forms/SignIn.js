@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,8 +10,10 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {useForm} from 'react-hook-form';
-import {useTheme} from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { useUserContext } from '../context/User';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 // function Copyright(props) {
 //   return (
@@ -29,7 +30,9 @@ import {useTheme} from '@mui/material';
 
 
 
-export default function SignIn({openSignUp}) {
+export default function SignIn({ openSignUp, close }) {
+  const router = useRouter()
+  const { login, user, afterLoginURL } = useUserContext()
   const {
     register,
     formState: { errors, isValid },
@@ -40,9 +43,20 @@ export default function SignIn({openSignUp}) {
   });
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
+
+    login(data.email, data.password)
     reset()
   };
+
+
+  useEffect(() => {
+    if (user.auth) {
+      close()
+      router.push(afterLoginURL)
+    }
+  }, [user])
+
 
 
 
@@ -58,105 +72,105 @@ export default function SignIn({openSignUp}) {
 
   return (
 
-      <Container component="main" maxWidth="xs" sx={{width: "500px"}}>
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form"
+    <Container component="main" maxWidth="xs" sx={{ width: "500px" }}>
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <Box component="form"
 
-               // onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
 
-               onSubmit={handleSubmit(onSubmit)}
-
-
+          onSubmit={handleSubmit(onSubmit)}
 
 
-               noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              //autoFocus
-              {...register("email", {
-                required: "Надо заполнить!",
-                pattern: {
-                  value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: "Ведите электронную почту"
-                }
-              })}
-            />
-            <div className="error" style={{ height: 30}}>
-              {errors?.email && <p>{errors?.email?.message || "Error!"}</p>}
-            </div>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              {...register("password", {
-                required: "Надо заполнить!",
-                pattern: {
-                  value: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/,
-                  message: "Минимум 6 символов, Латиница и цифры"
-                }
-              })}
-            />
-            <div className="error" style={{ height: 30 }}
 
-            >
-              {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
-            </div>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              disabled={!isValid}
-              color='primary'
-            >
-              Sign In
-            </Button>
-            <Grid container
+
+          noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            //autoFocus
+            {...register("email", {
+              required: "Надо заполнить!",
+              pattern: {
+                value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "Ведите электронную почту"
+              }
+            })}
+          />
+          <div className="error" style={{ height: 30 }}>
+            {errors?.email && <p>{errors?.email?.message || "Error!"}</p>}
+          </div>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            {...register("password", {
+              required: "Надо заполнить!",
+              pattern: {
+                value: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/,
+                message: "Минимум 6 символов, Латиница и цифры"
+              }
+            })}
+          />
+          <div className="error" style={{ height: 30 }}
+
+          >
+            {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
+          </div>
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={!isValid}
+            color='primary'
+          >
+            Sign In
+          </Button>
+          <Grid container
             spacing={2}
-            >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2" onClick={openSignUp}>
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+          >
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
             </Grid>
-          </Box>
+            <Grid item>
+              <Link href="#" variant="body2" onClick={openSignUp}>
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
-        {/*<Copyright sx={{ mt: 8, mb: 4 }} />*/}
-      </Container>
+      </Box>
+      {/*<Copyright sx={{ mt: 8, mb: 4 }} />*/}
+    </Container>
   );
 }

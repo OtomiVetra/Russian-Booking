@@ -1,8 +1,8 @@
-import {Container, Grid, Pagination} from '@mui/material';
+import { Container, Grid, Pagination } from '@mui/material';
 import SuitCard from '../components/suites/Card';
 import MainLayout from '../components/layouts/Main';
-import {useEffect, useState} from 'react';
-import {API_URL} from '../config';
+import { useEffect, useState } from 'react';
+import { API_URL } from '../config';
 
 
 
@@ -24,14 +24,14 @@ function App() {
         {suites.map((suit, index) => {
           return (
             <Grid item xs="12" md="3">
-              <SuitCard id={index+1} key={index} suit={suit}/>
+              <SuitCard id={index + 1} key={index} suit={suit} />
             </Grid>
           )
         })}
       </Grid>
       <Container>
         <Pagination
-          sx={{mt: 2, mb: 2}}
+          sx={{ mt: 2, mb: 2 }}
           count={10}
           variant="outlined"
           color="primary"

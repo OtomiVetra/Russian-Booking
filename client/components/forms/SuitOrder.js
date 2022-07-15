@@ -219,27 +219,6 @@ export default function SignUp({ openSignIn }) {
                 {errors?.email && <p>{errors?.email?.message || "Error!"}</p>}
               </div>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="new-password"
-                {...register("password", {
-                  required: "Надо заполнить!",
-                  pattern: {
-                    value: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/,
-                    message: "Минимум 6 символов, Латиница и цифры"
-                  }
-                })}
-              />
-              <div sx={{ color: 'red' }} className="error" style={{ height: 20 }}>
-                {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
-              </div>
-            </Grid>
             {/*<Grid item xs={12}>*/}
             {/*  <FormControlLabel*/}
             {/*    control={<Checkbox value="allowExtraEmails" color="primary" />}*/}
@@ -254,7 +233,7 @@ export default function SignUp({ openSignIn }) {
             sx={{ mt: 3, mb: 2 }}
             disabled={!isValid}
           >
-            Sign Up
+            Отправить
           </Button>
 
         </Box>

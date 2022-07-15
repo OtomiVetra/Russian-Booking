@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,30 +7,27 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, useTheme} from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, useTheme } from '@mui/material';
 import SignUp from '../forms/SignUp';
 import SignIn from '../forms/SignIn';
-import {useDataContext} from '../context/Data';
+import { useUserContext } from '../context/User';
+import { useUIContext } from '../context/UI';
 const ButtonAppBar = () => {
-
+  const { type,
+    open,
+    handleClickOpen,
+    handleClose } = useUIContext()
+  const router = useRouter()
   const theme = useTheme()
-  const {user} = useDataContext()
-  const [open, setOpen] = useState(false)
-  const [type, setType] = useState(null)
-  const handleClickOpen = (openType= 'signIn') => {
-    setOpen(true)
-    setType(openType)
-  }
-  const handleClose = () => {
-    setOpen(false)
-    setType(null)
-  }
-
+  const { user } = useUserContext()
   return (
-    <Box sx={{ flexGrow: 1}}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
+            onClick={() => {
+              router.push(`/`)
+            }}
             size="large"
             edge="start"
             color="inherit"
@@ -41,10 +39,10 @@ const ButtonAppBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Russia booking
           </Typography>
-          {user.auth?(
-            <Button color="inherit" onClick={e =>handleClickOpen('signIn')}>Profile </Button>
-          ):(
-            <Button color="inherit" onClick={e =>handleClickOpen('signIn')}>Login </Button>
+          {user.auth ? (
+            <Button color="inherit" onClick={e => router.push(`/profile`)}>{user.name} </Button>
+          ) : (
+            <Button color="inherit" onClick={e => handleClickOpen('signIn')}>Login </Button>
           )}
 
 
@@ -54,7 +52,8 @@ const ButtonAppBar = () => {
                 <DialogTitle id="registration">Registration</DialogTitle>
                 <DialogContent>
                   <SignUp
-                    openSignIn = {e => {
+                    close={handleClose}
+                    openSignIn={e => {
                       e.preventDefault()
                       setType('signIn')
                     }}
@@ -73,7 +72,8 @@ const ButtonAppBar = () => {
                 <DialogTitle id="registration">Log in</DialogTitle>
                 <DialogContent>
                   <SignIn
-                    openSignUp = {e => {
+                    close={handleClose}
+                    openSignUp={e => {
                       e.preventDefault()
                       setType('signUp')
                     }}

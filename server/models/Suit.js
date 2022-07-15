@@ -1,32 +1,33 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SuitSchema = new Schema({
-  "facility": String,
-  "capacity": Number,
-  "details": {
-    "description": String,
-    "area": Number,
-    "pictures": [
+  facility: String,
+  capacity: Number,
+  details: {
+    description: String,
+    area: Number,
+    pictures: [
       {
-        "url": String,
-        "description": String
-      }
-    ]
+        url: String,
+        description: String,
+      },
+    ],
   },
-  "rentPrices": [
+  view3d: {
+    src: String,
+  },
+  rentPrices: [
     {
-      "beginDate": Date,
-      "endDate": Date,
-      "price": Number,
-      "totalAvailable": Number
-    }
+      beginDate: Date,
+      endDate: Date,
+      price: Number,
+      totalAvailable: Number,
+    },
   ],
-  "reservations": [
-    String
-  ]
+  reservations: [String],
 });
 
-const model = mongoose.model('Suit', SuitSchema, 'suites');
+const model = mongoose.model("Suit", SuitSchema, "suites");
 
 module.exports = model;

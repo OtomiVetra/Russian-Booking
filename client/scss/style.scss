@@ -1,4 +1,4 @@
-.data-pickers >div {
+.data-pickers > div {
   margin-right: 24px;
 }
 
@@ -8,11 +8,11 @@
   min-height: 100vh;
 }
 
-
 .footer {
   margin-top: 24px;
   margin-bottom: 24px;
 }
+
 .payHeader {
   display: flex;
   flex-direction: row;
@@ -25,4 +25,21 @@
 
 .detailOrderButton {
   margin: 20px auto 0 180px;
+}
+
+.data-pickers {
+  margin-top: 30px;
+}
+
+.drawer-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  iframe {
+    flex: 1;
+    width: 100%;
+  }
+  .drawer-controls {
+    height: 100px;
+  }
 }
